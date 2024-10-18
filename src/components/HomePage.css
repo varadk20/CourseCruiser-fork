@@ -1,0 +1,145 @@
+/* src/components/HomePage.css */
+
+/* General page layout */
+.homepage {
+    display: flex;
+  }
+  
+  /* Sidebar styling */
+  .sidebar {
+    width: 300px;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+  }
+  
+  /* Course item hover functionality */
+  .course-item {
+    position: relative;
+  }
+  
+  .course-item .remove-btn {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .course-item:hover .remove-btn {
+    display: block;
+  }
+  
+  /* Main content area */
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
+  /* Header with course selection in top-right corner */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Course selection dropdown styling */
+  .course-selection {
+    margin-right: 20px;
+  }
+  
+  /* Search bar styling */
+  .search-bar {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar input {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .search-bar button {
+    padding: 10px;
+    margin-left: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .search-bar button:hover {
+    background-color: #218838;
+  }
+  
+  /* Sort options styling */
+  .sort-options {
+    margin-bottom: 20px;
+  }
+  
+  /* Video results displayed in a grid with 3 items per row */
+  .video-results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+  }
+  
+  .video-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+  }
+  
+  .video-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  
+  .video-card h3 {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  
+  .video-card p {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .video-card button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .video-card button:hover {
+    background-color: #0056b3;
+  }
+  
+  .video-player-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears above other content */
+  }
+  
+  
