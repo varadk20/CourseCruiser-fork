@@ -26,7 +26,7 @@ const Signup = () => {
       });
 
       alert("Signup successful!");
-      navigate("/user-courses");
+      navigate("/home");
     } catch (error) {
       alert("Signup failed: " + error.message);
     }

@@ -7,11 +7,13 @@ import {
   addToCourse as addToCourseInFirestore,
   removeFromCourse as removeFromCourseInFirestore,
 } from "../utils/firestoreHelpers";
+
 import { fetchYouTubeVideos } from "../utils/youtubeAPI";
+import VideoPlayer from "./VideoPlayer"; // Import the VideoPlayer component
 import "./HomePage.css";
 
-
 const HomePage = () => {
+  
   const [searchTerm, setSearchTerm] = useState("");
   const [videos, setVideos] = useState([]);
   const [sortOption, setSortOption] = useState("");
@@ -19,7 +21,9 @@ const HomePage = () => {
   const [selectedCourse, setSelectedCourse] = useState("");
   const [newCourseName, setNewCourseName] = useState("");
   const [error, setError] = useState(""); // State to handle errors
-
+  const [currentVideo, setCurrentVideo] = useState(null); // To hold the selected video for playing
+  const [showVideoPlayer, setShowVideoPlayer] = useState(false); // Controls the visibility of the video player
+  const [videoProgress, setVideoProgress] = useState(0); // To track progress of the video
 
   useEffect(() => {
     const loadCourses = async () => {
@@ -92,8 +96,16 @@ const HomePage = () => {
     return videos; // Default return if no sorting option is selected
   };
 
-  
+  const playVideo = (video) => {
+    setCurrentVideo(video); // Set the selected video
+    setShowVideoPlayer(true); // Show the video player
+    setVideoProgress(0); // Reset the progress for a new video
+  };
 
+  const closeVideoPlayer = () => {
+    setShowVideoPlayer(false); // Hide the video player
+    setCurrentVideo(null); // Clear the selected video
+  };
 
   return (
     <div className="homepage">
@@ -115,9 +127,7 @@ const HomePage = () => {
               <ul>
                 {courses[courseName].map((video, index) => (
                   <li key={index} className="course-item">
-                    <a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener noreferrer">
-                      {video.title} ({video.type === "video" ? "Video" : "Playlist"})
-                    </a>
+                    <span onClick={() => playVideo(video)}>{video.title}</span>
                     <button
                       className="remove-btn"
                       onClick={() => removeFromCourse(courseName, video.id)}
@@ -183,11 +193,14 @@ const HomePage = () => {
         <div className="video-results">
           {sortVideos(videos, sortOption).map((video) => (
             <div key={video.id} className="video-card">
-              <a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener noreferrer">
-                <img src={video.thumbnail} alt={video.title} />
-                <h3>{video.title}</h3>
-                <p>{video.type === "video" ? "Video" : "Playlist"}</p>
-              </a>
+              <img src={video.thumbnail} alt={video.title} />
+              <h3>{video.title}</h3>
+              <p>{video.type === "video" ? "Video" : "Playlist"}</p>
+              <button
+                onClick={() => playVideo(video)} // Play video on button click
+              >
+                Play Video
+              </button>
               <button
                 onClick={() => addToCourse(selectedCourse, video)}
                 disabled={!selectedCourse}
@@ -198,12 +211,18 @@ const HomePage = () => {
           ))}
         </div>
       </div>
-      
-      
+
+      {/* Video Player */}
+      {showVideoPlayer && currentVideo && (
+        <VideoPlayer
+          videoId={currentVideo.id}
+          progress={videoProgress}
+          onClose={closeVideoPlayer}
+          onProgressChange={(progress) => setVideoProgress(progress)}
+        />
+      )}
     </div>
-    
   );
-  
 };
 
 export default HomePage;
