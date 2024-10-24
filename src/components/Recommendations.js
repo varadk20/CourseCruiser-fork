@@ -52,7 +52,7 @@ const Recommendations = () => {
                             <div key={index} className="card">
                                 <h3>{course.course_title}</h3>
                                 <p><strong>Description:</strong> {course.subject}</p>
-                                <p><strong>Paid or Not:</strong> {course.is_paid ? 'Paid' : 'Free'}</p>
+                                <p><strong>Paid or Not:</strong> {course.is_paid}</p>
                                 <p><strong>Level:</strong> {course.level}</p>
                                 <a href={course.url} target="_blank" rel="noopener noreferrer">
                                     View Course

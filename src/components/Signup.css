@@ -19,12 +19,13 @@
 }
 
 .signup-form input {
-    margin: 15px 0; /* Increased margin for better separation */
-    padding: 15px; /* Added padding for a comfortable feel */
-    border: 1px solid #ccc; /* Light border around inputs */
-    border-radius: 6px; /* Rounded corners for inputs */
-    font-size: 16px; /* Increased font size for readability */
-    transition: border 0.3s, box-shadow 0.3s; /* Smooth transitions */
+    width: 100%; /* Ensure all input fields take full width */
+    margin: 15px 0;
+    padding: 15px; 
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border 0.3s, box-shadow 0.3s;
 }
 
 .signup-form input:focus {

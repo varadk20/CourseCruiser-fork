@@ -22,7 +22,7 @@ form {
     margin-bottom: 30px;
 }
 
-input[type="text"] {
+.container input[type="text"] {
     width: 70%;
     padding: 10px;
     border: 2px solid #ddd;
@@ -32,7 +32,7 @@ input[type="text"] {
     transition: border-color 0.3s;
 }
 
-input[type="text"]:focus {
+.container input[type="text"]:focus {
     border-color: #007bff;
     outline: none;
 }
