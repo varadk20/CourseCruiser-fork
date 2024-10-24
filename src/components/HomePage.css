@@ -1,145 +1,261 @@
-/* src/components/HomePage.css */
-
 /* General page layout */
 .homepage {
-    display: flex;
-  }
-  
-  /* Sidebar styling */
-  .sidebar {
-    width: 300px;
-    background-color: #f8f8f8;
-    padding: 20px;
-    border-right: 1px solid #ddd;
-  }
-  
-  /* Course item hover functionality */
-  .course-item {
-    position: relative;
-  }
-  
-  .course-item .remove-btn {
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: red;
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-  }
-  
-  .course-item:hover .remove-btn {
-    display: block;
-  }
-  
-  /* Main content area */
-  .main-content {
-    flex-grow: 1;
-    padding: 20px;
-  }
-  
-  /* Header with course selection in top-right corner */
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  /* Course selection dropdown styling */
-  .course-selection {
-    margin-right: 20px;
-  }
-  
-  /* Search bar styling */
-  .search-bar {
-    display: flex;
-    margin-bottom: 20px;
-  }
-  
-  .search-bar input {
-    padding: 10px;
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .search-bar button {
-    padding: 10px;
-    margin-left: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .search-bar button:hover {
-    background-color: #218838;
-  }
-  
-  /* Sort options styling */
-  .sort-options {
-    margin-bottom: 20px;
-  }
-  
-  /* Video results displayed in a grid with 3 items per row */
-  .video-results {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    width: 100%;
-  }
-  
-  .video-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-    border-radius: 4px;
-  }
-  
-  .video-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-  }
-  
-  .video-card h3 {
-    margin: 10px 0;
-    font-size: 16px;
-  }
-  
-  .video-card p {
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .video-card button {
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .video-card button:hover {
-    background-color: #0056b3;
-  }
-  
-  .video-player-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Ensure it appears above other content */
-  }
-  
-  
+  display: flex;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 300px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #444;
+}
+
+.sidebar button {
+  padding: 5px 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 14px;
+  margin-left: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar button:hover {
+  background-color: #d32f2f;
+}
+
+.add-course input {
+  padding: 10px;
+  width: calc(100% - 20px);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.add-course button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.add-course button:hover {
+  background-color: #388e3c;
+}
+
+/* Course item hover functionality */
+.course-item {
+  position: relative;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.course-item .remove-btn {
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: 0;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 12px;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.course-item:hover .remove-btn {
+  display: block;
+}
+
+.course-item .remove-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* Main content area */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.course-selection label {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.course-selection select {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+/* Search bar styling */
+.search-bar {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.search-bar button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #0056b3;
+}
+
+/* Sort options styling */
+.sort-options {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.sort-options label {
+  margin-right: 10px;
+}
+
+.sort-options select {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+/* Video results displayed in a grid with 3 items per row */
+.video-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.video-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.video-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.video-card h3 {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.video-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+.video-card button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  margin-right: 15px;
+}
+
+.video-card button:hover {
+  background-color: #0056b3;
+}
+
+/* Video player overlay */
+.video-player-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+
+.logout {
+  padding: 10px 20px; /* Add padding for a better look */
+  background-color: #ff4757; /* Use a vibrant background color */
+  color: white; /* White text color for contrast */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Increase font size */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.logout:hover {
+  background-color: #ff6b81; /* Change background color on hover */
+}

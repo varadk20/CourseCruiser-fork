@@ -23,6 +23,7 @@ const Login = () => {
   };
 
   return (
+    <div className="form-container">
     <form onSubmit={handleLogin} className="login-form">
       <input
         type="email"
@@ -42,6 +43,7 @@ const Login = () => {
         <Link to="/forgot-password" className="forgot-password-link">Forgot Password?</Link>
       </div>
     </form>
+    </div>
   );
 };
 

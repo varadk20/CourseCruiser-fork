@@ -7,13 +7,13 @@ import {
   addToCourse as addToCourseInFirestore,
   removeFromCourse as removeFromCourseInFirestore,
 } from "../utils/firestoreHelpers";
-
 import { fetchYouTubeVideos } from "../utils/youtubeAPI";
 import VideoPlayer from "./VideoPlayer"; // Import the VideoPlayer component
+import { useNavigate } from "react-router-dom";
 import "./HomePage.css";
 
 const HomePage = () => {
-  
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [videos, setVideos] = useState([]);
   const [sortOption, setSortOption] = useState("");
@@ -107,6 +107,11 @@ const HomePage = () => {
     setCurrentVideo(null); // Clear the selected video
   };
 
+  // Function to handle logout
+  const handleLogout = () => {
+    navigate("/login");
+  };
+
   return (
     <div className="homepage">
       {/* Sidebar for My Courses */}
@@ -166,6 +171,7 @@ const HomePage = () => {
                 </option>
               ))}
             </select>
+            <button className="logout" onClick={handleLogout} style={{ marginLeft: '10px' }}>Logout</button>
           </div>
         </div>
 

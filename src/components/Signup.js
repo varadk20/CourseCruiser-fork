@@ -33,27 +33,33 @@ const Signup = () => {
   };
 
   return (
+    <div className="form-container">
     <form onSubmit={handleSignup} className="signup-form">
       <input
         type="text"
         value={fullName}
         onChange={(e) => setFullName(e.target.value)}
         placeholder="Full Name"
+        required
       />
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
+        required
       />
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
+        required
       />
       <button type="submit">Sign Up</button>
+      <a href="/login" className="login-link">Already have an account? Log in</a>
     </form>
+    </div>
   );
 };
 

@@ -1,25 +1,72 @@
+.form-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+}
+
 .login-form {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin: 0 auto;
-  }
-  
-  .login-form input {
-    margin: 10px 0;
-    padding: 10px;
-  }
-  
-  .links {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .signup-link {
-    color: blue;
-  }
-  
-  .forgot-password-link {
-    color: red;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  width: 350px; /* Increased width for a more spacious layout */
+  margin: 0 auto;
+  padding: 30px; /* Added padding for better spacing */
+  border: 1px solid #e0e0e0; /* Softer border for definition */
+  border-radius: 12px; /* More pronounced rounded corners */
+  background-color: #ffffff; /* Clean white background */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+}
+
+.login-form input {
+  margin: 15px 0; /* Increased margin for better separation */
+  padding: 15px; /* Added padding for a comfortable feel */
+  border: 1px solid #ccc; /* Light border around inputs */
+  border-radius: 6px; /* Rounded corners for inputs */
+  font-size: 16px; /* Increased font size for readability */
+  transition: border 0.3s, box-shadow 0.3s; /* Smooth transitions */
+}
+
+.login-form input:focus {
+  border: 1px solid #007bff; /* Highlighted border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle glow effect */
+  outline: none; /* Remove default outline */
+}
+
+
+.login-form button {
+  padding: 15px; /* Added padding for button */
+  border: none; /* Removed border */
+  border-radius: 6px; /* Rounded corners for button */
+  background-color: #007bff; /* Primary button color */
+  color: white; /* Text color */
+  font-size: 16px; /* Increased font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px; /* Increased margin for separation */
+}
+
+.signup-link {
+  color: #007bff; /* Standard link color */
+  text-decoration: none; /* Removed underline for a cleaner look */
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.signup-link:hover {
+  text-decoration: underline; /* Underline on hover for emphasis */
+}
+
+.forgot-password-link {
+  color: #dc3545; /* Bootstrap's danger color */
+  text-decoration: none; /* Removed underline for a cleaner look */
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline; /* Underline on hover for emphasis */
+}

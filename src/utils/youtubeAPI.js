@@ -1,10 +1,10 @@
-// src/utils/youtubeAPI.js
 import axios from "axios";
- 
-const API_KEY = process.env.REACT_APP_yt_API_KEY; // Replace with your YouTube API key
+
+const API_KEY = process.env.REACT_APP_yt_API_KEY; // Make sure this is set in your environment
 
 export const fetchYouTubeVideos = async (searchTerm, sortOption) => {
-  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video,playlist&q=${encodeURIComponent(searchTerm)}&key=${API_KEY}`;
+  const order = sortOption || 'relevance'; // Default to 'relevance' if no sort option is selected
+  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video,playlist&q=${encodeURIComponent(searchTerm)}&order=${order}&key=${API_KEY}`;
 
   try {
     const response = await axios.get(url);
@@ -18,11 +18,7 @@ export const fetchYouTubeVideos = async (searchTerm, sortOption) => {
         title: item.snippet.title,
         thumbnail: item.snippet.thumbnails.default.url,
         type: item.id.kind === "youtube#video" ? "Video" : "Playlist",
-        // You might need to fetch additional details if you want view count or upload date
       }));
-
-    // Sort logic could be implemented here based on your needs
-    // Example: filteredResults.sort((a, b) => b.title.localeCompare(a.title));
 
     return filteredResults;
   } catch (error) {
