@@ -1,4 +1,3 @@
-// src/components/HomePage.js
 import React, { useEffect, useState } from "react";
 import {
   fetchCourses,
@@ -8,7 +7,7 @@ import {
   removeFromCourse as removeFromCourseInFirestore,
 } from "../utils/firestoreHelpers";
 import { fetchYouTubeVideos } from "../utils/youtubeAPI";
-import VideoPlayer from "./VideoPlayer"; // Import the VideoPlayer component
+import VideoPlayer from "./VideoPlayer";
 import { useNavigate } from "react-router-dom";
 import "./HomePage.css";
 
@@ -20,10 +19,10 @@ const HomePage = () => {
   const [courses, setCourses] = useState({});
   const [selectedCourse, setSelectedCourse] = useState("");
   const [newCourseName, setNewCourseName] = useState("");
-  const [error, setError] = useState(""); // State to handle errors
-  const [currentVideo, setCurrentVideo] = useState(null); // To hold the selected video for playing
-  const [showVideoPlayer, setShowVideoPlayer] = useState(false); // Controls the visibility of the video player
-  const [videoProgress, setVideoProgress] = useState(0); // To track progress of the video
+  const [error, setError] = useState("");
+  const [currentVideo, setCurrentVideo] = useState(null);
+  const [showVideoPlayer, setShowVideoPlayer] = useState(false);
+  const [videoProgress, setVideoProgress] = useState(0);
 
   useEffect(() => {
     const loadCourses = async () => {
@@ -35,7 +34,7 @@ const HomePage = () => {
   }, []);
 
   const handleSearch = async () => {
-    setError(""); // Reset error message
+    setError("");
     try {
       const results = await fetchYouTubeVideos(searchTerm, sortOption);
       setVideos(results);
@@ -67,7 +66,6 @@ const HomePage = () => {
     updatedCourses[newName] = updatedCourses[oldName];
     delete updatedCourses[oldName];
     setCourses(updatedCourses);
-    // Implement Firestore rename logic if necessary
   };
 
   const addToCourse = async (courseName, video) => {
@@ -86,30 +84,32 @@ const HomePage = () => {
     }));
   };
 
-  // Function to sort videos based on sort option
   const sortVideos = (videos, option) => {
     if (option === "date") {
-      return videos.sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate)); // Assuming you have uploadDate
+      return videos.sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate));
     } else if (option === "viewCount") {
-      return videos.sort((a, b) => b.viewCount - a.viewCount); // Assuming you have viewCount
+      return videos.sort((a, b) => b.viewCount - a.viewCount);
     }
-    return videos; // Default return if no sorting option is selected
+    return videos;
   };
 
   const playVideo = (video) => {
-    setCurrentVideo(video); // Set the selected video
-    setShowVideoPlayer(true); // Show the video player
-    setVideoProgress(0); // Reset the progress for a new video
+    setCurrentVideo(video);
+    setShowVideoPlayer(true);
+    setVideoProgress(0);
   };
 
   const closeVideoPlayer = () => {
-    setShowVideoPlayer(false); // Hide the video player
-    setCurrentVideo(null); // Clear the selected video
+    setShowVideoPlayer(false);
+    setCurrentVideo(null);
   };
 
-  // Function to handle logout
   const handleLogout = () => {
     navigate("/login");
+  };
+
+  const goToRecommendations = () => {
+    navigate("/recommendations"); // Navigate to the recommendations page
   };
 
   return (
@@ -171,7 +171,13 @@ const HomePage = () => {
                 </option>
               ))}
             </select>
-            <button className="logout" onClick={handleLogout} style={{ marginLeft: '10px' }}>Logout</button>
+            {/* New Recommendations Button */}
+            <button className="recommendations" onClick={goToRecommendations} style={{ marginLeft: '10px' }}>
+              Recommendations
+            </button>
+            <button className="logout" onClick={handleLogout} style={{ marginLeft: '10px' }}>
+              Logout
+            </button>
           </div>
         </div>
 
@@ -194,7 +200,7 @@ const HomePage = () => {
           </select>
         </div>
 
-        {error && <div className="error-message">{error}</div>} {/* Display error message */}
+        {error && <div className="error-message">{error}</div>}
 
         <div className="video-results">
           {sortVideos(videos, sortOption).map((video) => (
@@ -202,15 +208,10 @@ const HomePage = () => {
               <img src={video.thumbnail} alt={video.title} />
               <h3>{video.title}</h3>
               <p>{video.type === "video" ? "Video" : "Playlist"}</p>
-              <button
-                onClick={() => playVideo(video)} // Play video on button click
-              >
+              <button onClick={() => playVideo(video)}>
                 Play Video
               </button>
-              <button
-                onClick={() => addToCourse(selectedCourse, video)}
-                disabled={!selectedCourse}
-              >
+              <button onClick={() => addToCourse(selectedCourse, video)} disabled={!selectedCourse}>
                 Add to Course
               </button>
             </div>
