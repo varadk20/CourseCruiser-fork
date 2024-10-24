@@ -259,3 +259,16 @@
 .logout:hover {
   background-color: #ff6b81; /* Change background color on hover */
 }
+
+
+.recommendations {
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.recommendations:hover {
+  background-color: #45a049; /* Darker green */
+}
